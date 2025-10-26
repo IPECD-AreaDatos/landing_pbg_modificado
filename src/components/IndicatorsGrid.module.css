@@ -1,0 +1,84 @@
+/* Estilos para IndicatorsGrid */
+.indicatorsSection { 
+  padding: 2rem 0; 
+  background: #f8fbfd; 
+}
+
+.sectionTitle { 
+  font-weight: 800; 
+  letter-spacing: .2px; 
+  color: #1f2937; 
+  text-align: center; 
+  margin-bottom: .25rem; 
+}
+
+.sectionSubtitle { 
+  text-align: center; 
+  color: #6b7280; 
+  margin-bottom: 2.25rem; 
+}
+
+.indicatorCard {
+  position: relative; 
+  background: #fff; 
+  border: 1px solid #e5e7eb; 
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem; 
+  height: 100%; 
+  text-align: center;
+  box-shadow: 0 1px 0 rgba(17,24,39,.04);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.indicatorCard:hover { 
+  transform: translateY(-2px); 
+  box-shadow: 0 10px 20px rgba(17,24,39,.10); 
+  border-color: #dbeafe; 
+}
+
+.indicatorIcon { 
+  width: 42px; 
+  height: 42px; 
+  border-radius: 10px; 
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  margin-bottom: .85rem; 
+  font-size: 18px; 
+  color: #fff; 
+}
+
+.iconPrimary { background: #76B82A; }
+.iconSuccess { background: #246638; }
+.iconDanger  { background: #ef4444; }
+.iconInfo    { background: #729BD1; }
+.iconWarning { background: #F7A600; }
+
+.indicatorValue { 
+  font-weight: 800; 
+  font-size: clamp(1.35rem, 1.15rem + 1vw, 1.75rem); 
+  line-height: 1.15; 
+  margin-bottom: .25rem; 
+}
+
+.valuePrimary { color: #76B82A; }
+.valueSuccess { color: #246638; }
+.valueDanger  { color: #dc2626; }
+.valueInfo    { color: #729BD1; }
+.valueWarning { color: #F7A600; }
+
+.indicatorLabel { 
+  color: #374151; 
+  font-weight: 600; 
+  font-size: .95rem; 
+}
+
+.indicatorChange { 
+  margin-top: .35rem; 
+  font-size: .85rem; 
+  font-weight: 500; 
+}
+
+.changeSuccess { color: #246638; } 
+.changeDanger { color: #dc2626; } 
+.changeMuted { color: #6b7280; }
