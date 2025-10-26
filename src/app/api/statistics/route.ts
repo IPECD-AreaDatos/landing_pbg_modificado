@@ -4,6 +4,13 @@ import { PbgData, Statistics } from '@/types';
 
 export async function GET() {
   try {
+    console.log('=== Statistics API called ===');
+    console.log('DB Config check:', {
+      host: process.env.DB_HOST ? 'Set' : 'Missing',
+      user: process.env.DB_USER ? 'Set' : 'Missing',
+      database: process.env.DB_NAME ? 'Set' : 'Missing'
+    });
+
     // Obtener todos los datos
     const allData = await executeQuery<PbgData>(`
       SELECT año, letra, descripcion, valor, variacion_interanual 

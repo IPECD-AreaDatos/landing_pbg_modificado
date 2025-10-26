@@ -16,11 +16,26 @@ const pool = mysql.createPool(dbConfig);
 
 export async function executeQuery<T = any>(query: string, params: any[] = []): Promise<T[]> {
   try {
+    console.log('Executing query:', query.substring(0, 100) + '...');
+    console.log('With params:', params);
+    
     const [rows] = await pool.execute(query, params);
+    console.log('Query returned', Array.isArray(rows) ? rows.length : 'non-array', 'rows');
+    
     return rows as T[];
   } catch (error) {
-    console.error('Database query error:', error);
-    throw new Error('Error executing database query');
+    console.error('Database query error details:', {
+      error: error instanceof Error ? error.message : error,
+      query: query.substring(0, 100) + '...',
+      params,
+      config: {
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        database: process.env.DB_NAME,
+        port: process.env.DB_PORT
+      }
+    });
+    throw new Error(`Database error: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
