@@ -53,9 +53,18 @@ export default function ClientHomePage() {
           fetch('/api/sectors')
         ]);
 
-        if (!statsRes.ok) throw new Error('Error fetching statistics');
-        if (!chartsRes.ok) throw new Error('Error fetching charts');
-        if (!sectorsRes.ok) throw new Error('Error fetching sectors');
+        if (!statsRes.ok) {
+          const errorText = await statsRes.text();
+          throw new Error(`Error fetching statistics (${statsRes.status}): ${errorText}`);
+        }
+        if (!chartsRes.ok) {
+          const errorText = await chartsRes.text();
+          throw new Error(`Error fetching charts (${chartsRes.status}): ${errorText}`);
+        }
+        if (!sectorsRes.ok) {
+          const errorText = await sectorsRes.text();
+          throw new Error(`Error fetching sectors (${sectorsRes.status}): ${errorText}`);
+        }
 
         const [statsData, chartsData, sectorsData] = await Promise.all([
           statsRes.json(),
@@ -96,12 +105,21 @@ export default function ClientHomePage() {
   return (
     <div className="min-h-screen bg-slate-50">
       {error && (
-        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-4 mx-4">
           <div className="flex">
-            <div className="ml-3">
-              <p className="text-sm text-yellow-700">
-                Advertencia: Algunos datos podrían no estar disponibles. {error}
-              </p>
+            <div className="ml-3 flex-1">
+              <h3 className="text-sm font-medium text-red-800">
+                Error de conexión con la base de datos
+              </h3>
+              <div className="mt-2 text-sm text-red-700">
+                <p>No se pudieron cargar los datos. Detalles técnicos:</p>
+                <p className="mt-1 font-mono text-xs bg-red-100 p-2 rounded">
+                  {error}
+                </p>
+                <p className="mt-2">
+                  Por favor, verifica que las variables de entorno estén configuradas correctamente en Vercel.
+                </p>
+              </div>
             </div>
           </div>
         </div>
