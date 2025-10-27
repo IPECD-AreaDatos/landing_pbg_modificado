@@ -7,6 +7,7 @@ import ChartsGrid from '@/components/ChartsGrid';
 import SectorsGrid from '@/components/SectorsGrid';
 import SectorEvolutionInteractive from '@/components/SectorEvolutionInteractive';
 import { Statistics, ChartDataPoint, SectorData } from '@/types';
+import { getApiUrl } from '@/lib/api-utils';
 
 interface DashboardData {
   statistics: Statistics;
@@ -48,9 +49,9 @@ export default function ClientHomePage() {
 
         // Hacer las llamadas API del lado del cliente
         const [statsRes, chartsRes, sectorsRes] = await Promise.all([
-          fetch('/api/statistics'),
-          fetch('/api/charts'),
-          fetch('/api/sectors')
+          fetch(getApiUrl('statistics')),
+          fetch(getApiUrl('charts')),
+          fetch(getApiUrl('sectors'))
         ]);
 
         if (!statsRes.ok) {

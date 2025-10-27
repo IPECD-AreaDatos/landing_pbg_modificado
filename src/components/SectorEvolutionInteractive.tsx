@@ -14,6 +14,7 @@ import {
   Legend,
 } from 'chart.js';
 import { SectorEvolutionData, SectorEvolutionStats } from '@/types';
+import { getApiUrl } from '@/lib/api-utils';
 
 ChartJS.register(
   CategoryScale,
@@ -62,7 +63,7 @@ export default function SectorEvolutionInteractive() {
       setLoading(true);
       setError(null);
       
-      const response = await fetch(`/api/sectors/${sectorCode}/evolution`);
+      const response = await fetch(getApiUrl(`sectors/${sectorCode}/evolution`));
       
       if (!response.ok) {
         throw new Error('Error al cargar datos de evolución');
