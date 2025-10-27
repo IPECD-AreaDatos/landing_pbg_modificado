@@ -1,17 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dashboard PBG Corrientes
+
+Dashboard interactivo para visualización de datos del Producto Bruto Geográfico de Corrientes.
+
+## Configuración de Entorno
+
+### Variables de Entorno Principales
+
+Copia `.env.example` a `.env.local` y configura:
+
+```bash
+# Database Configuration
+DB_HOST=tu-host-de-bd
+DB_PORT=3306
+DB_USER=tu-usuario
+DB_PASSWORD=tu-password
+DB_NAME=tu-base-datos
+
+# Configuración de Despliegue
+NEXT_PUBLIC_BASE_PATH=/pbg-dashboard  # Para proxy reverso
+NEXT_PUBLIC_API_URL=                  # API externa (opcional)
+```
+
+### Modos de Configuración
+
+**1. Desarrollo Local (sin proxy):**
+```bash
+# No configurar NEXT_PUBLIC_BASE_PATH
+# La app estará en http://localhost:3000
+```
+
+**2. Producción con Proxy Reverso:**
+```bash
+NEXT_PUBLIC_BASE_PATH=/pbg-dashboard
+# La app estará en https://tu-dominio.com/pbg-dashboard/
+```
+
+**3. API Externa:**
+```bash
+NEXT_PUBLIC_API_URL=https://tu-api.com/api
+# Las llamadas irán a la API externa en lugar de /api/*
+```
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
