@@ -7,8 +7,17 @@ const nextConfig: NextConfig = {
   assetPrefix: '/pbg-dashboard',
   trailingSlash: true,
   images: {
-    unoptimized: true // Recomendado para despliegues estáticos con basePath
-  }
+    unoptimized: true
+  },
+  // Configuración para proxy reverso
+  async rewrites() {
+    return [
+      {
+        source: '/pbg-dashboard/:path*',
+        destination: '/:path*',
+      },
+    ]
+  },
 };
 
 export default nextConfig;
