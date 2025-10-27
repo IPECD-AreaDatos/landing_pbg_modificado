@@ -3,8 +3,7 @@ export function getApiUrl(path: string): string {
   // Remove leading slash if present
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
   
-  // When using basePath, Next.js automatically handles the routing
-  // We just need to use relative paths and Next.js will handle the rest
+  // Simple relative path - no basePath complications
   return `/api/${cleanPath}`;
 }
 

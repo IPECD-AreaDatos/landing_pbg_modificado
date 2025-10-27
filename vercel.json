@@ -5,18 +5,5 @@
       "use": "@vercel/next"
     }
   ],
-  "regions": ["iad1"],
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/pbg-dashboard",
-      "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/pbg-dashboard/(.*)",
-      "destination": "/pbg-dashboard/$1"
-    }
-  ]
+  "regions": ["iad1"]
 }
