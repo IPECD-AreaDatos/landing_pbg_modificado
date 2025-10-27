@@ -8,16 +8,7 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true
-  },
-  // Configuración para proxy reverso
-  async rewrites() {
-    return [
-      {
-        source: '/pbg-dashboard/:path*',
-        destination: '/:path*',
-      },
-    ]
-  },
+  }
 };
 
 export default nextConfig;
