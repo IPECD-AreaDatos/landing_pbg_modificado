@@ -110,14 +110,15 @@ export default function SectorEvolutionInteractive() {
     plugins: {
       legend: {
         position: 'top' as const,
+        labels: {
+          font: {
+            size: typeof window !== 'undefined' && window.innerWidth < 768 ? 10 : 12,
+          },
+          padding: typeof window !== 'undefined' && window.innerWidth < 768 ? 10 : 20,
+        },
       },
       title: {
-        display: true,
-        text: 'Evolución del valor (millones $ de 2004)',
-        font: {
-          size: 16,
-          weight: 'bold' as const,
-        },
+        display: false, // Removemos título interno
       },
       tooltip: {
         callbacks: {
@@ -141,6 +142,9 @@ export default function SectorEvolutionInteractive() {
           color: 'rgba(0, 0, 0, 0.1)',
         },
         ticks: {
+          font: {
+            size: 10,
+          },
           callback: function(value: any) {
             return `$${value.toFixed(1)}M`;
           }
@@ -149,6 +153,12 @@ export default function SectorEvolutionInteractive() {
       x: {
         grid: {
           color: 'rgba(0, 0, 0, 0.1)',
+        },
+        ticks: {
+          font: {
+            size: typeof window !== 'undefined' && window.innerWidth < 768 ? 9 : 11,
+          },
+          maxRotation: typeof window !== 'undefined' && window.innerWidth < 768 ? 90 : 45,
         }
       }
     },
@@ -180,14 +190,15 @@ export default function SectorEvolutionInteractive() {
     plugins: {
       legend: {
         position: 'top' as const,
+        labels: {
+          font: {
+            size: typeof window !== 'undefined' && window.innerWidth < 768 ? 10 : 12,
+          },
+          padding: typeof window !== 'undefined' && window.innerWidth < 768 ? 10 : 20,
+        },
       },
       title: {
-        display: true,
-        text: 'Variación anual (%)',
-        font: {
-          size: 16,
-          weight: 'bold' as const,
-        },
+        display: false, // Removemos título interno
       },
       tooltip: {
         callbacks: {
@@ -205,6 +216,9 @@ export default function SectorEvolutionInteractive() {
           color: 'rgba(0, 0, 0, 0.1)',
         },
         ticks: {
+          font: {
+            size: typeof window !== 'undefined' && window.innerWidth < 768 ? 10 : 11,
+          },
           callback: function(value: any) {
             return `${value}%`;
           }
@@ -213,6 +227,12 @@ export default function SectorEvolutionInteractive() {
       x: {
         grid: {
           color: 'rgba(0, 0, 0, 0.1)',
+        },
+        ticks: {
+          font: {
+            size: typeof window !== 'undefined' && window.innerWidth < 768 ? 9 : 11,
+          },
+          maxRotation: typeof window !== 'undefined' && window.innerWidth < 768 ? 90 : 45,
         }
       }
     },
@@ -256,18 +276,29 @@ export default function SectorEvolutionInteractive() {
           </p>
           
           {/* Selector de sectores */}
-          <div className="max-w-md mx-auto">
-            <select
-              value={selectedSector}
-              onChange={(e) => setSelectedSector(e.target.value)}
-              className="w-full px-4 py-3 text-lg border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-white"
-            >
-              {AVAILABLE_SECTORS.map(sector => (
-                <option key={sector.code} value={sector.code}>
-                  {sector.code} - {sector.name}
-                </option>
-              ))}
-            </select>
+          <div className="max-w-2xl mx-auto">
+            <label htmlFor="sector-select" className="block text-sm font-medium text-slate-700 mb-2">
+              Seleccionar sector económico:
+            </label>
+            <div className="relative">
+              <select
+                id="sector-select"
+                value={selectedSector}
+                onChange={(e) => setSelectedSector(e.target.value)}
+                className="w-full px-4 py-4 text-base md:text-lg border-2 border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-white shadow-sm font-medium text-slate-800 cursor-pointer hover:border-slate-400 transition-colors"
+              >
+                {AVAILABLE_SECTORS.map(sector => (
+                  <option key={sector.code} value={sector.code}>
+                    {sector.code} - {sector.name}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -302,17 +333,23 @@ export default function SectorEvolutionInteractive() {
         )}
 
         {/* Gráficos */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
           {/* Gráfico de evolución */}
-          <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-6">
-            <div style={{ height: '400px' }}>
+          <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-4 md:p-6">
+            <h3 className="text-lg font-semibold text-slate-700 mb-4 text-center">
+              Evolución del valor (millones $ de 2004)
+            </h3>
+            <div style={{ height: '300px' }} className="md:h-96">
               <Line data={evolutionChartData} options={evolutionChartOptions} />
             </div>
           </div>
 
           {/* Gráfico de variación YoY */}
-          <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-6">
-            <div style={{ height: '400px' }}>
+          <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-4 md:p-6">
+            <h3 className="text-lg font-semibold text-slate-700 mb-4 text-center">
+              Variación interanual (%)
+            </h3>
+            <div style={{ height: '300px' }} className="md:h-96">
               <Bar data={yoyChartData} options={yoyChartOptions} />
             </div>
           </div>

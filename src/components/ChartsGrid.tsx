@@ -61,23 +61,20 @@ export default function ChartsGrid({ evolutionData, sectorsData }: ChartsGridPro
 
   const evolutionOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top' as const,
         labels: {
           font: {
-            size: 12,
+            size: 11,
             weight: 'bold' as const,
           },
+          padding: 15,
         },
       },
       title: {
-        display: true,
-        text: 'Evolución del PBG Total',
-        font: {
-          size: 16,
-          weight: 'bold' as const,
-        },
+        display: false, // Removemos el título interno ya que lo ponemos arriba
       },
       tooltip: {
         callbacks: {
@@ -100,6 +97,9 @@ export default function ChartsGrid({ evolutionData, sectorsData }: ChartsGridPro
           color: 'rgba(0, 0, 0, 0.1)',
         },
         ticks: {
+          font: {
+            size: 10,
+          },
           callback: function(value: any) {
             return `$${(value / 1000000).toFixed(2)}M`;
           }
@@ -108,6 +108,13 @@ export default function ChartsGrid({ evolutionData, sectorsData }: ChartsGridPro
       x: {
         grid: {
           color: 'rgba(0, 0, 0, 0.1)',
+        },
+        ticks: {
+          font: {
+            size: 9,
+          },
+          maxRotation: 75,
+          minRotation: 30,
         }
       }
     },
@@ -134,17 +141,13 @@ export default function ChartsGrid({ evolutionData, sectorsData }: ChartsGridPro
 
   const sectorsOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false, // Ocultar leyenda para el gráfico de barras
       },
       title: {
-        display: true,
-        text: 'Distribución Sectorial 2024',
-        font: {
-          size: 16,
-          weight: 'bold' as const,
-        },
+        display: false, // Removemos título interno
       },
       subtitle: {
         display: true,
@@ -175,8 +178,11 @@ export default function ChartsGrid({ evolutionData, sectorsData }: ChartsGridPro
       y: {
         beginAtZero: true,
         ticks: {
+          font: {
+            size: 10,
+          },
           callback: function(value: any) {
-            return `${Number(value).toFixed(2)}%`;
+            return `${Number(value).toFixed(1)}%`;
           }
         },
         grid: {
@@ -186,9 +192,9 @@ export default function ChartsGrid({ evolutionData, sectorsData }: ChartsGridPro
       x: {
         ticks: {
           maxRotation: 90,
-          minRotation: 45,
+          minRotation: 75,
           font: {
-            size: 9,
+            size: 8,
           }
         },
         grid: {
@@ -201,20 +207,26 @@ export default function ChartsGrid({ evolutionData, sectorsData }: ChartsGridPro
   return (
     <div className="py-12 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-slate-800 text-center mb-10">
+        <h2 className="text-2xl md:text-3xl font-bold text-slate-800 text-center mb-10">
           Análisis Gráfico
         </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
           {/* Gráfico de Evolución */}
-          <div className="bg-slate-50 rounded-xl p-6 shadow-md">
-            <div className="h-80">
+          <div className="bg-slate-50 rounded-xl p-4 md:p-6 shadow-md">
+            <h3 className="text-lg font-semibold text-slate-700 mb-4 text-center">
+              Evolución del PBG Total
+            </h3>
+            <div className="h-64 md:h-80">
               <Line data={evolutionChartData} options={evolutionOptions} />
             </div>
           </div>
 
           {/* Gráfico de Sectores */}
-          <div className="bg-slate-50 rounded-xl p-6 shadow-md">
-            <div className="h-80">
+          <div className="bg-slate-50 rounded-xl p-4 md:p-6 shadow-md">
+            <h3 className="text-lg font-semibold text-slate-700 mb-4 text-center">
+              Distribución Sectorial 2024
+            </h3>
+            <div className="h-64 md:h-80">
               <Bar data={sectorsChartData} options={sectorsOptions} />
             </div>
           </div>
