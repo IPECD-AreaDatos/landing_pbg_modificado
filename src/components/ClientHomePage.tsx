@@ -82,6 +82,8 @@ export default function ClientHomePage() {
 
       } catch (err) {
         console.error('Error fetching data:', err);
+        console.log('Current URL:', window.location.href);
+        console.log('User Agent:', navigator.userAgent);
         setError(err instanceof Error ? err.message : 'Error desconocido');
         // Mantener datos por defecto en caso de error
       } finally {
