@@ -23,7 +23,7 @@ export default function SubcategoriesList({ sectorCode, sectorName, sectorData, 
   const fetchSubcategories = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/sectors/${sectorCode}/subcategories`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/api/sectors/${sectorCode}/subcategories`);
       
       if (!response.ok) {
         throw new Error('Error al cargar subcategorías');

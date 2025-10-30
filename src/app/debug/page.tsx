@@ -1,4 +1,5 @@
 'use client';
+import { apiUrl } from '@/lib/api-client';
 
 import { useState, useEffect } from 'react';
 
@@ -25,7 +26,7 @@ export default function DebugPage() {
     // Test API Statistics
     try {
       console.log('Testing /api/statistics...');
-      const response = await fetch('/api/statistics');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/api/statistics`);
       const responseText = await response.text();
       
       results.statistics = {
@@ -57,7 +58,7 @@ export default function DebugPage() {
     // Test API Charts
     try {
       console.log('Testing /api/charts...');
-      const response = await fetch('/api/charts');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/api/charts`);
       const responseText = await response.text();
       
       results.charts = {
@@ -76,7 +77,7 @@ export default function DebugPage() {
     // Test API Sectors
     try {
       console.log('Testing /api/sectors...');
-      const response = await fetch('/api/sectors');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/api/sectors`);
       const responseText = await response.text();
       
       results.sectors = {

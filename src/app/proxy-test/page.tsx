@@ -1,4 +1,5 @@
 'use client';
+import { apiUrl } from '@/lib/api-client';
 
 import { useState, useEffect } from 'react';
 
@@ -16,7 +17,7 @@ export default function ProxyTestPage() {
 
     // Test 1: API Statistics
     try {
-      const response = await fetch('/api/statistics');
+      const response = await fetch(apiUrl('/api/statistics'));
       testResults.apiStatistics = {
         status: response.status,
         ok: response.ok,
@@ -40,7 +41,7 @@ export default function ProxyTestPage() {
 
     // Test 3: Root API
     try {
-      const response = await fetch('/api/diagnostics');
+      const response = await fetch(apiUrl('/api/diagnostics'));
       testResults.apiDiagnostics = {
         status: response.status,
         ok: response.ok,

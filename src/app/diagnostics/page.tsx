@@ -48,7 +48,7 @@ export default function DiagnosticsPage() {
       
       <div className="space-y-4">
         <button
-          onClick={() => testAPI('/api/diagnostics')}
+          onClick={() => testAPI(`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/api/diagnostics`)}
           className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
           disabled={loading}
         >
@@ -56,7 +56,7 @@ export default function DiagnosticsPage() {
         </button>
         
         <button
-          onClick={() => testAPI('/api/statistics')}
+          onClick={() => testAPI(`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/api/statistics`)}
           className="bg-green-500 text-white px-4 py-2 rounded mr-2"
           disabled={loading}
         >
@@ -64,7 +64,7 @@ export default function DiagnosticsPage() {
         </button>
 
         <button
-          onClick={() => testAPI('/api/charts')}
+          onClick={() => testAPI(`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/api/charts`)}
           className="bg-purple-500 text-white px-4 py-2 rounded mr-2"
           disabled={loading}
         >
