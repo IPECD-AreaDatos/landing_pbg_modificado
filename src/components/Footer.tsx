@@ -12,7 +12,7 @@ export default function Footer() {
               Instituto Provincial de Estadística y Ciencia de Datos
             </h3>
             <p className="text-slate-300 leading-relaxed mb-4">
-              Organismo técnico especializado en la producción, análisis y difusión 
+              Organismo técnico especializado en la producción, análisis y difusión
               de información estadística oficial de la Provincia de Corrientes.
             </p>
             <div className="flex flex-col space-y-2 text-sm text-slate-300">
@@ -22,11 +22,11 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
-                <a 
-                  href="mailto:info@ipecd.corrientes.gob.ar" 
+                <a
+                  href="mailto:Estadistica@corrientes.gob.ar"
                   className="hover:text-green-400 transition-colors"
                 >
-                  info@ipecd.corrientes.gob.ar
+                  Estadistica@corrientes.gob.ar
                 </a>
               </div>
               <div className="flex items-center space-x-2">
@@ -41,24 +41,9 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Enlaces Útiles</h4>
             <ul className="space-y-2 text-sm text-slate-300">
               <li>
-                <Link href="/" className="hover:text-green-400 transition-colors">
-                  Dashboard Principal
-                </Link>
-              </li>
-              <li>
-                <Link href="/sectores" className="hover:text-green-400 transition-colors">
-                  Análisis por Sectores
-                </Link>
-              </li>
-              <li>
-                <Link href="/metodologia" className="hover:text-green-400 transition-colors">
-                  Metodología
-                </Link>
-              </li>
-              <li>
-                <a 
-                  href="https://ipecd.corrientes.gob.ar" 
-                  target="_blank" 
+                <a
+                  href="https://estadistica.corrientes.gob.ar"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-1 hover:text-green-400 transition-colors"
                 >
@@ -74,7 +59,6 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Información Técnica</h4>
             <ul className="space-y-2 text-sm text-slate-300">
               <li>Precios constantes base 2004</li>
-              <li>Metodología INDEC</li>
               <li>Actualización anual</li>
               <li>17 sectores económicos</li>
             </ul>
@@ -85,17 +69,9 @@ export default function Footer() {
         <div className="border-t border-slate-700 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-slate-400">
             <p>
-              © {new Date().getFullYear()} IPECD - Instituto Provincial de Estadística y Ciencia de Datos. 
+              © {new Date().getFullYear()} IPECD - Instituto Provincial de Estadística y Ciencia de Datos.
               Todos los derechos reservados.
             </p>
-            <div className="flex space-x-4 mt-4 md:mt-0">
-              <Link href="/terminos" className="hover:text-green-400 transition-colors">
-                Términos de Uso
-              </Link>
-              <Link href="/privacidad" className="hover:text-green-400 transition-colors">
-                Privacidad
-              </Link>
-            </div>
           </div>
         </div>
       </div>
