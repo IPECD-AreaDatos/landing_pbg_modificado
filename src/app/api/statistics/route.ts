@@ -13,9 +13,9 @@ export async function GET() {
 
     // Obtener todos los datos
     const allData = await executeQuery<PbgData>(`
-      SELECT año, letra, descripcion, valor, variacion_interanual 
+      SELECT "año", letra, descripcion, valor, variacion_interanual 
       FROM pbg_anual_desglosado 
-      ORDER BY año ASC, letra ASC
+      ORDER BY "año" ASC, letra ASC
     `);
 
     console.log('Total datos obtenidos:', allData.length);

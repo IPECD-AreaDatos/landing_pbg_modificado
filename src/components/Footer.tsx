@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ExternalLink, Mail, MapPin, Calendar } from 'lucide-react';
+import logoPlumaBlanca from '@/../public/logo_pluma_blanca.png';
 
 export default function Footer() {
   return (
@@ -8,9 +10,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Información del Instituto */}
           <div className="col-span-1 lg:col-span-2">
-            <h3 className="text-lg font-bold mb-4">
-              Instituto Provincial de Estadística y Ciencia de Datos
-            </h3>
+            <div className="mb-4">
+              <Image 
+                src={logoPlumaBlanca} 
+                alt="IMI Corrientes" 
+                className="h-10 w-auto mb-3 object-contain opacity-90"
+              />
+              <h3 className="text-lg font-bold">
+                Instituto de Modernización e Innovación
+              </h3>
+            </div>
             <p className="text-slate-300 leading-relaxed mb-4">
               Organismo técnico especializado en la producción, análisis y difusión
               de información estadística oficial de la Provincia de Corrientes.
@@ -23,10 +32,10 @@ export default function Footer() {
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
                 <a
-                  href="mailto:Estadistica@corrientes.gob.ar"
+                  href="mailto:imi@corrientes.gob.ar"
                   className="hover:text-green-400 transition-colors"
                 >
-                  Estadistica@corrientes.gob.ar
+                  imi@corrientes.gob.ar
                 </a>
               </div>
               <div className="flex items-center space-x-2">
@@ -42,7 +51,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-slate-300">
               <li>
                 <a
-                  href="https://estadistica.corrientes.gob.ar"
+                  href="https://appimi.corrientes.gob.ar"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-1 hover:text-green-400 transition-colors"
@@ -69,7 +78,7 @@ export default function Footer() {
         <div className="border-t border-slate-700 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-slate-400">
             <p>
-              © {new Date().getFullYear()} IPECD - Instituto Provincial de Estadística y Ciencia de Datos.
+              © {new Date().getFullYear()} IMI - Instituto de Modernización e Innovación.
               Todos los derechos reservados.
             </p>
           </div>
