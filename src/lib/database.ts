@@ -1,4 +1,10 @@
-import { Pool } from 'pg';
+import { Pool, types } from 'pg';
+
+// PostgreSQL devuelve BIGINT y NUMERIC como strings por defecto. Los datos de
+// PBG están dentro del rango seguro de JavaScript y la aplicación realiza
+// cálculos aritméticos con estos campos, por lo que los normalizamos a number.
+types.setTypeParser(types.builtins.INT8, Number);
+types.setTypeParser(types.builtins.NUMERIC, Number);
 
 const pool = new Pool({
   host: process.env.DB_HOST,

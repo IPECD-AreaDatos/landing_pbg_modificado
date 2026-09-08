@@ -11,7 +11,7 @@ Copia `.env.example` a `.env.local` y configura:
 ```bash
 # Database Configuration
 DB_HOST=tu-host-de-bd
-DB_PORT=3306
+DB_PORT=5432
 DB_USER=tu-usuario
 DB_PASSWORD=tu-password
 DB_NAME=tu-base-datos
