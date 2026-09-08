@@ -1,28 +1,31 @@
-import mysql from 'mysql2/promise';
+import { Pool } from 'pg';
 
-const dbConfig = {
+const pool = new Pool({
   host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT || '3306'),
+  port: parseInt(process.env.DB_PORT || '5432', 10),
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-};
-
-// Crear pool de conexiones reutilizable
-const pool = mysql.createPool(dbConfig);
+  ssl: false, // Poné { rejectUnauthorized: false } si el Postgres exige SSL
+  max: 10,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 10000,
+});
 
 export async function executeQuery<T = any>(query: string, params: any[] = []): Promise<T[]> {
   try {
     console.log('Executing query:', query.substring(0, 100) + '...');
     console.log('With params:', params);
-    
-    const [rows] = await pool.execute(query, params);
-    console.log('Query returned', Array.isArray(rows) ? rows.length : 'non-array', 'rows');
-    
-    return rows as T[];
+
+    // En PostgreSQL los placeholders parametrizados usan $1, $2 en vez de ?
+    // Si tu código pasa queries con ?, las convertimos a $1, $2, etc.
+    let paramIndex = 1;
+    const formattedQuery = query.replace(/\?/g, () => `$${paramIndex++}`);
+
+    const result = await pool.query(formattedQuery, params);
+    console.log('Query returned', result.rows.length, 'rows');
+
+    return result.rows as T[];
   } catch (error) {
     console.error('Database query error details:', {
       error: error instanceof Error ? error.message : error,
@@ -32,11 +35,13 @@ export async function executeQuery<T = any>(query: string, params: any[] = []): 
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
         database: process.env.DB_NAME,
-        port: process.env.DB_PORT
-      }
+        port: process.env.DB_PORT,
+      },
     });
     throw new Error(`Database error: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
 export default pool;
+
+
