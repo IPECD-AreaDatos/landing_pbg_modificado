@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ExternalLink, Mail, MapPin, Calendar } from 'lucide-react';
+import { ExternalLink, Mail, MapPin } from 'lucide-react';
 import logoModernizacion from '@/../public/logo-modernizacion.png';
 
 export default function Footer() {
@@ -37,10 +37,6 @@ export default function Footer() {
                   imi@corrientes.gob.ar
                 </a>
               </div>
-              <div className="flex items-center space-x-2">
-                <Calendar className="h-4 w-4" />
-                <span>Actualizado: {new Date().getFullYear()}</span>
-              </div>
             </div>
           </div>
 
@@ -68,7 +64,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-slate-300">
               <li>Precios constantes base 2004</li>
               <li>Actualización anual</li>
-              <li>17 sectores económicos</li>
+              <li>Desglose por sectores económicos</li>
             </ul>
           </div>
         </div>
