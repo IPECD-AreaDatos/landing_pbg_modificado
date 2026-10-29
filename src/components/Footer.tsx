@@ -1,20 +1,19 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import { ExternalLink, Mail, MapPin, Calendar } from 'lucide-react';
-import logoPlumaBlanca from '@/../public/logo_pluma_blanca.png';
+import logoModernizacion from '@/../public/logo-modernizacion.png';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-white">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="border-t-4 border-[#10b981] bg-[#1b2839] text-white">
+      <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Información del Instituto */}
           <div className="col-span-1 lg:col-span-2">
             <div className="mb-4">
               <Image 
-                src={logoPlumaBlanca} 
-                alt="IMI Corrientes" 
-                className="h-10 w-auto mb-3 object-contain opacity-90"
+                src={logoModernizacion}
+                alt="Gobierno de Corrientes e Instituto de Modernización e Innovación"
+                className="h-12 w-auto mb-4 object-contain"
               />
               <h3 className="text-lg font-bold">
                 Instituto de Modernización e Innovación
@@ -51,7 +50,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-slate-300">
               <li>
                 <a
-                  href="https://appimi.corrientes.gob.ar"
+                  href="https://appimi.corrientes.gob.ar/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-1 hover:text-green-400 transition-colors"

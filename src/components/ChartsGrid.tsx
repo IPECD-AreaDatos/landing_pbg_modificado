@@ -46,11 +46,11 @@ export default function ChartsGrid({ evolutionData, sectorsData }: ChartsGridPro
       {
         label: 'PBG Total (Miles de millones)',
         data: evolutionData.map(item => item.value), // Valor completo tal como viene de la base
-        borderColor: 'rgb(34, 197, 94)',
-        backgroundColor: 'rgba(34, 197, 94, 0.1)',
+        borderColor: '#10b981',
+        backgroundColor: 'rgba(16, 185, 129, 0.12)',
         tension: 0.4,
         borderWidth: 3,
-        pointBackgroundColor: 'rgb(34, 197, 94)',
+        pointBackgroundColor: '#10b981',
         pointBorderColor: 'white',
         pointBorderWidth: 2,
         pointRadius: 6,
@@ -131,8 +131,8 @@ export default function ChartsGrid({ evolutionData, sectorsData }: ChartsGridPro
       {
         label: 'Participación (%)',
         data: allSectors.map(sector => sector.value), // value ya es el porcentaje
-        backgroundColor: '#22c55e', // Verde uniforme como en tu imagen
-        borderColor: '#16a34a',
+        backgroundColor: '#10b981', // Verde uniforme como en tu imagen
+        borderColor: '#047857',
         borderWidth: 1,
         borderRadius: 4,
       },
@@ -205,14 +205,14 @@ export default function ChartsGrid({ evolutionData, sectorsData }: ChartsGridPro
   };
 
   return (
-    <div className="py-12 bg-white">
+    <div className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-slate-800 text-center mb-10">
+        <h2 className="text-2xl md:text-3xl font-bold text-[#1b2839] text-center mb-10">
           Análisis Gráfico
         </h2>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
           {/* Gráfico de Evolución */}
-          <div className="bg-slate-50 rounded-xl p-4 md:p-6 shadow-md">
+          <div className="bg-white rounded-2xl border border-slate-200 p-5 md:p-7 shadow-[0_16px_40px_rgba(27,40,57,0.07)]">
             <h3 className="text-lg font-semibold text-slate-700 mb-4 text-center">
               Evolución del PBG Total
             </h3>
@@ -222,7 +222,7 @@ export default function ChartsGrid({ evolutionData, sectorsData }: ChartsGridPro
           </div>
 
           {/* Gráfico de Sectores */}
-          <div className="bg-slate-50 rounded-xl p-4 md:p-6 shadow-md">
+          <div className="bg-white rounded-2xl border border-slate-200 p-5 md:p-7 shadow-[0_16px_40px_rgba(27,40,57,0.07)]">
             <h3 className="text-lg font-semibold text-slate-700 mb-4 text-center">
               Distribución Sectorial 2024
             </h3>

@@ -36,7 +36,7 @@ export default function RootLayout({
           referrerPolicy="no-referrer" 
         />
       </head>
-      <body className={`${inter.className} antialiased min-h-screen bg-slate-50 flex flex-col`}>
+      <body className={`${inter.className} antialiased min-h-screen bg-[#f1f5f9] flex flex-col`}>
         <ProxyPathFixer />
         <Header />
         <main className="flex-1">

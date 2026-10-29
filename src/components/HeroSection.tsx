@@ -8,21 +8,35 @@ interface HeroSectionProps {
 
 export default function HeroSection({ statistics }: HeroSectionProps) {
   return (
-    <section className="hero-section bg-gradient-to-br from-slate-50 to-slate-100 py-16">
-      <div className="container mx-auto px-4">
-        <h1 className="hero-title text-4xl md:text-6xl font-bold text-slate-800 mb-6 text-center">
-          Producto Bruto<br />
-          Geográfico de <span className="hero-subtitle text-green-600">Corrientes</span>
-        </h1>
-        <p className="hero-description text-lg text-slate-600 leading-relaxed max-w-5xl mx-auto text-center">
-          Análisis oficial del <strong>Producto Bruto Geográfico (PBG) de Corrientes</strong>, correspondiente al período {statistics.min_year}–{statistics.max_year}.
-          Datos elaborados por el <strong>Instituto de Modernización e Innovación (IMI)</strong>,
-          expresados en precios constantes de 2004.<br />
-          <strong>El conjunto abarca {statistics.sectors_count} categorías económicas principales</strong> 
-          (16 sectores productivos + PBG total) con más de 35 fuentes de información diferentes y
-          <strong> {statistics.total_records.toLocaleString('es-AR')} registros históricos</strong>, 
-          lo que permite un análisis detallado del desarrollo económico provincial.
-        </p>
+    <section className="relative isolate overflow-hidden bg-[#1b2839] text-white">
+      <div className="pointer-events-none absolute -right-20 -top-40 h-96 w-96 rounded-full bg-emerald-400/10 blur-3xl" aria-hidden="true" />
+      <div className="pointer-events-none absolute -bottom-64 left-1/4 h-96 w-96 rounded-full bg-sky-400/10 blur-3xl" aria-hidden="true" />
+      <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 md:py-20 lg:grid-cols-[minmax(0,1.4fr)_minmax(280px,0.6fr)] lg:items-center">
+        <div>
+          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-300/25 bg-emerald-300/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-emerald-200">
+            Economía provincial <span aria-hidden="true">·</span> Serie histórica
+          </span>
+          <h1 className="max-w-4xl text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+            Producto Bruto Geográfico <span className="text-emerald-300">de Corrientes</span>
+          </h1>
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-slate-200 sm:text-lg">
+            Evolución y composición de la economía provincial, con datos oficiales del Instituto de Modernización e Innovación. Valores expresados a precios constantes de 2004.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 gap-4 rounded-3xl border border-white/15 bg-white/10 p-5 shadow-2xl backdrop-blur-sm sm:p-7">
+          <div className="col-span-2 border-b border-white/15 pb-4">
+            <p className="text-xs font-bold uppercase tracking-widest text-emerald-200">Período analizado</p>
+            <p className="mt-2 text-3xl font-extrabold tracking-tight">{statistics.min_year}–{statistics.max_year}</p>
+          </div>
+          <div>
+            <p className="text-2xl font-extrabold">{statistics.sectors_count}</p>
+            <p className="mt-1 text-xs leading-relaxed text-slate-200">sectores económicos</p>
+          </div>
+          <div>
+            <p className="text-2xl font-extrabold">{statistics.total_records.toLocaleString('es-AR')}</p>
+            <p className="mt-1 text-xs leading-relaxed text-slate-200">registros históricos</p>
+          </div>
+        </div>
       </div>
     </section>
   );

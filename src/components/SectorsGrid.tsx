@@ -33,14 +33,14 @@ export default function SectorsGrid({ sectors }: SectorsGridProps) {
 
   const getVariationIcon = (yoy: number | undefined) => {
     if (!yoy) return <Minus className="h-4 w-4 text-slate-400" />;
-    if (yoy > 0) return <TrendingUp className="h-4 w-4 text-green-600" />;
+    if (yoy > 0) return <TrendingUp className="h-4 w-4 text-emerald-700" />;
     if (yoy < 0) return <TrendingDown className="h-4 w-4 text-red-600" />;
     return <Minus className="h-4 w-4 text-slate-400" />;
   };
 
   const getVariationColor = (yoy: number | undefined) => {
     if (!yoy) return 'text-slate-500';
-    if (yoy > 0) return 'text-green-600';
+    if (yoy > 0) return 'text-emerald-700';
     if (yoy < 0) return 'text-red-600';
     return 'text-slate-500';
   };
@@ -53,12 +53,13 @@ export default function SectorsGrid({ sectors }: SectorsGridProps) {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {sortedSectors.map((sector, index) => (
-            <div 
-              key={sector.code} 
-              className="group cursor-pointer"
+            <button
+              type="button"
+              key={sector.code}
+              className="group w-full rounded-2xl text-left focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-emerald-600"
               onClick={() => handleSectorClick(sector.code, sector.sector, sector)}
             >
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 group-hover:scale-105 cursor-pointer border-2 border-transparent hover:border-green-200">
+              <div className="h-full rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_10px_28px_rgba(27,40,57,0.05)] transition-all duration-300 group-hover:-translate-y-1 group-hover:border-emerald-300 group-hover:shadow-xl">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
@@ -69,7 +70,7 @@ export default function SectorsGrid({ sectors }: SectorsGridProps) {
                         {sector.code}
                       </span>
                     </div>
-                    <h3 className="text-sm font-semibold text-slate-800 leading-tight group-hover:text-green-600 transition-colors">
+                    <h3 className="text-sm font-semibold text-slate-800 leading-tight group-hover:text-emerald-700 transition-colors">
                       {sector.sector}
                     </h3>
                   </div>
@@ -86,7 +87,7 @@ export default function SectorsGrid({ sectors }: SectorsGridProps) {
                     </div>
                     <div className="w-full bg-slate-200 rounded-full h-2">
                       <div 
-                        className="bg-green-500 h-2 rounded-full transition-all duration-500"
+                        className="bg-emerald-500 h-2 rounded-full transition-all duration-500"
                         style={{ width: `${Math.min(100, typeof sector.value === 'number' ? sector.value : 0)}%` }}
                       />
                     </div>
@@ -117,14 +118,14 @@ export default function SectorsGrid({ sectors }: SectorsGridProps) {
                 {/* Indicador de hover */}
                 <div className="mt-4 text-center opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="flex items-center justify-center gap-1">
-                    <span className="text-xs text-green-600 font-medium">
+                    <span className="text-xs text-emerald-700 font-medium">
                       Ver subcategorías
                     </span>
-                    <ChevronRight className="h-3 w-3 text-green-600" />
+                    <ChevronRight className="h-3 w-3 text-emerald-700" />
                   </div>
                 </div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </div>

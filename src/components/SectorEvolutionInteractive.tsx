@@ -93,11 +93,11 @@ export default function SectorEvolutionInteractive() {
       {
         label: 'Valor (millones $ de 2004)',
         data: evolutionData.map(item => item.value / 1000000), // Convertir a millones
-        borderColor: 'rgb(34, 197, 94)',
-        backgroundColor: 'rgba(34, 197, 94, 0.1)',
+        borderColor: '#10b981',
+        backgroundColor: 'rgba(16, 185, 129, 0.12)',
         tension: 0.4,
         borderWidth: 3,
-        pointBackgroundColor: 'rgb(34, 197, 94)',
+        pointBackgroundColor: '#10b981',
         pointBorderColor: 'white',
         pointBorderWidth: 2,
         pointRadius: 5,
@@ -175,10 +175,10 @@ export default function SectorEvolutionInteractive() {
         label: 'Variación YoY (%)',
         data: yoyData.map(item => item.yoy),
         backgroundColor: yoyData.map(item => 
-          item.yoy && item.yoy > 0 ? 'rgba(34, 197, 94, 0.8)' : 'rgba(239, 68, 68, 0.8)'
+          item.yoy && item.yoy > 0 ? 'rgba(16, 185, 129, 0.85)' : 'rgba(239, 68, 68, 0.8)'
         ),
         borderColor: yoyData.map(item => 
-          item.yoy && item.yoy > 0 ? 'rgb(34, 197, 94)' : 'rgb(239, 68, 68)'
+          item.yoy && item.yoy > 0 ? '#10b981' : 'rgb(239, 68, 68)'
         ),
         borderWidth: 1,
       },
@@ -244,7 +244,7 @@ export default function SectorEvolutionInteractive() {
       <div className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center py-12">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600"></div>
             <span className="ml-3 text-slate-600">Cargando evolución sectorial...</span>
           </div>
         </div>
@@ -286,7 +286,7 @@ export default function SectorEvolutionInteractive() {
                 id="sector-select"
                 value={selectedSector}
                 onChange={(e) => setSelectedSector(e.target.value)}
-                className="w-full px-4 py-4 text-base md:text-lg border-2 border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-white shadow-sm font-medium text-slate-800 cursor-pointer hover:border-slate-400 transition-colors"
+                className="w-full px-4 py-4 text-base md:text-lg border-2 border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white shadow-sm font-medium text-slate-800 cursor-pointer hover:border-slate-400 transition-colors"
               >
                 {AVAILABLE_SECTORS.map(sector => (
                   <option key={sector.code} value={sector.code}>
@@ -306,25 +306,25 @@ export default function SectorEvolutionInteractive() {
         {/* Estadísticas rápidas */}
         {statistics && (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div className="bg-slate-50 rounded-lg p-4 text-center">
-              <div className="text-2xl font-bold text-green-600">
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+              <div className="text-2xl font-bold text-emerald-700">
                 ${(statistics.last_value / 1000000).toFixed(1)}M
               </div>
               <div className="text-sm text-slate-600">Valor {statistics.max_year}</div>
             </div>
-            <div className="bg-slate-50 rounded-lg p-4 text-center">
-              <div className={`text-2xl font-bold ${statistics.total_growth_percentage >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+              <div className={`text-2xl font-bold ${statistics.total_growth_percentage >= 0 ? 'text-emerald-700' : 'text-red-600'}`}>
                 {statistics.total_growth_percentage >= 0 ? '+' : ''}{statistics.total_growth_percentage.toFixed(1)}%
               </div>
               <div className="text-sm text-slate-600">Crecimiento total</div>
             </div>
-            <div className="bg-slate-50 rounded-lg p-4 text-center">
-              <div className={`text-2xl font-bold ${statistics.cagr >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+              <div className={`text-2xl font-bold ${statistics.cagr >= 0 ? 'text-emerald-700' : 'text-red-600'}`}>
                 {statistics.cagr >= 0 ? '+' : ''}{statistics.cagr.toFixed(1)}%
               </div>
               <div className="text-sm text-slate-600">CAGR anual</div>
             </div>
-            <div className="bg-slate-50 rounded-lg p-4 text-center">
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
               <div className="text-2xl font-bold text-slate-800">
                 {statistics.years_span}
               </div>
@@ -336,7 +336,7 @@ export default function SectorEvolutionInteractive() {
         {/* Gráficos */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
           {/* Gráfico de evolución */}
-          <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-4 md:p-6">
+          <div className="bg-white rounded-2xl shadow-[0_16px_40px_rgba(27,40,57,0.07)] border border-slate-200 p-4 md:p-6">
             <h3 className="text-lg font-semibold text-slate-700 mb-4 text-center">
               Evolución del valor (millones $ de 2004)
             </h3>
@@ -346,7 +346,7 @@ export default function SectorEvolutionInteractive() {
           </div>
 
           {/* Gráfico de variación YoY */}
-          <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-4 md:p-6">
+          <div className="bg-white rounded-2xl shadow-[0_16px_40px_rgba(27,40,57,0.07)] border border-slate-200 p-4 md:p-6">
             <h3 className="text-lg font-semibold text-slate-700 mb-4 text-center">
               Variación interanual (%)
             </h3>

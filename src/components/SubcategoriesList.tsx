@@ -47,7 +47,7 @@ export default function SubcategoriesList({ sectorCode, sectorName, sectorData, 
 
   const getVariationColor = (yoy: number | undefined) => {
     if (!yoy) return 'text-slate-500';
-    if (yoy > 0) return 'text-green-600';
+    if (yoy > 0) return 'text-emerald-700';
     if (yoy < 0) return 'text-red-600';
     return 'text-slate-500';
   };
@@ -57,7 +57,7 @@ export default function SubcategoriesList({ sectorCode, sectorName, sectorData, 
       <div className="fixed inset-0 bg-white/20 backdrop-blur-sm flex items-center justify-center z-50 p-4">
         <div className="bg-white/95 backdrop-blur-lg rounded-xl p-8 max-w-md w-full shadow-xl border border-white/20">
           <div className="flex justify-center items-center py-8">
-            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
+            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-emerald-600"></div>
             <span className="ml-3 text-slate-700">Cargando...</span>
           </div>
         </div>
@@ -89,10 +89,10 @@ export default function SubcategoriesList({ sectorCode, sectorName, sectorData, 
       <div className="bg-white/95 backdrop-blur-lg rounded-xl shadow-2xl max-w-md w-full max-h-[80vh] overflow-hidden border border-white/20">
         
         {/* Header con info del sector principal */}
-        <div className="p-4 border-b border-slate-200/50 bg-gradient-to-r from-blue-50/80 to-slate-50/80">
+        <div className="p-4 border-b border-slate-200/50 bg-gradient-to-r from-emerald-50/80 to-slate-50/80">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg">
+              <div className="w-10 h-10 bg-[#1b2839] rounded-lg flex items-center justify-center shadow-lg">
                 <span className="text-white font-bold text-sm">{sectorCode}</span>
               </div>
               <div>
@@ -171,7 +171,7 @@ export default function SubcategoriesList({ sectorCode, sectorName, sectorData, 
                   </div>
                   
                   {/* Barra azul a la izquierda */}
-                  <div className="w-1 h-full bg-blue-400 absolute left-0 top-0"></div>
+                  <div className="w-1 h-full bg-emerald-500 absolute left-0 top-0"></div>
                 </div>
               ))}
             </div>

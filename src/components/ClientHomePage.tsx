@@ -85,7 +85,6 @@ export default function ClientHomePage() {
         console.log('Current URL:', window.location.href);
         console.log('User Agent:', navigator.userAgent);
         setError(err instanceof Error ? err.message : 'Error desconocido');
-        // Mantener datos por defecto en caso de error
       } finally {
         setLoading(false);
       }
@@ -96,38 +95,31 @@ export default function ClientHomePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <div className="min-h-[50vh] bg-[#f1f5f9] flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Cargando dashboard...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto mb-4" aria-hidden="true"></div>
+          <p className="text-slate-600">Cargando datos del PBG...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex min-h-[50vh] items-center justify-center bg-[#f1f5f9] px-5 py-16">
+        <div role="alert" className="max-w-xl rounded-3xl border border-rose-200 bg-white p-8 text-center shadow-[0_18px_42px_rgba(27,40,57,0.08)]">
+          <h1 className="text-2xl font-bold text-[#1b2839]">No se pudieron cargar los datos</h1>
+          <p className="mt-3 text-slate-600">El tablero no puede mostrar información actual en este momento. Intentá de nuevo en unos minutos.</p>
+          <button type="button" onClick={() => window.location.reload()} className="mt-6 rounded-xl bg-[#047857] px-5 py-3 font-semibold text-white transition-colors hover:bg-[#065f46] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700">
+            Volver a intentar
+          </button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {error && (
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-4 mx-4">
-          <div className="flex">
-            <div className="ml-3 flex-1">
-              <h3 className="text-sm font-medium text-red-800">
-                Error de conexión con la base de datos
-              </h3>
-              <div className="mt-2 text-sm text-red-700">
-                <p>No se pudieron cargar los datos. Detalles técnicos:</p>
-                <p className="mt-1 font-mono text-xs bg-red-100 p-2 rounded">
-                  {error}
-                </p>
-                <p className="mt-2">
-                  Por favor, verifica que las variables de entorno estén configuradas correctamente en Vercel.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-      
+    <div className="min-h-screen bg-[#f1f5f9]">
       {/* Hero Section */}
       <HeroSection statistics={data.statistics} />
       

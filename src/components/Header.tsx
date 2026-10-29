@@ -1,35 +1,28 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import logoColor from '@/../public/logo_color.png';
+import logoModernizacion from '@/../public/logo-modernizacion.png';
 import { BarChart3 } from 'lucide-react';
 
 export default function Header() {
   return (
-    <header className="bg-white shadow-sm border-b border-slate-200">
-      <div className="container mx-auto px-4">
-        {/* Cambiamos h-16 a h-20 para dar más espacio vertical */}
-        <div className="flex items-center justify-between h-20">
-          
-          {/* Logo IMI más grande */}
-          <div className="flex items-center">
-            <Image 
-              src={logoColor} 
-              alt="Logo Instituto de Modernización e Innovación Corrientes" 
-              className="h-14 w-auto mr-4 object-contain" 
-              priority
-            />
+    <header className="border-b-4 border-[#10b981] bg-[#1b2839] text-white shadow-lg">
+      <div className="mx-auto flex min-h-24 max-w-7xl flex-wrap items-center justify-between gap-5 px-5 py-4 sm:px-8">
+        <Link href="/" aria-label="Inicio del tablero PBG Corrientes" className="rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300">
+          <Image
+            src={logoModernizacion}
+            alt="Gobierno de Corrientes e Instituto de Modernización e Innovación"
+            className="h-12 w-auto object-contain sm:h-14"
+            priority
+          />
+        </Link>
+        <div className="flex items-center gap-3 text-right">
+          <div className="hidden sm:block">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">Tablero público</p>
+            <p className="text-sm font-semibold text-slate-100">PBG Corrientes</p>
           </div>
-          
-          {/* Logo y título del dashboard */}
-          <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-              <BarChart3 className="h-6 w-6 text-white" />
-            </div>
-            <div className="hidden md:block">
-              <h1 className="text-xl font-bold text-slate-800">PBG Corrientes</h1>
-              <p className="text-xs text-slate-600">Dashboard Económico</p>
-            </div>
-          </Link>
+          <span className="grid h-11 w-11 place-items-center rounded-xl border border-white/15 bg-white/10 text-emerald-300" aria-hidden="true">
+            <BarChart3 className="h-5 w-5" />
+          </span>
         </div>
       </div>
     </header>
